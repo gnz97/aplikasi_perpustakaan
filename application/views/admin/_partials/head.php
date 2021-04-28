@@ -28,3 +28,5 @@
 
     <!-- Main CSS-->
     <link href="<?= base_url()?>assets/css/theme.css" rel="stylesheet" media="all">
+
+    <link rel="stylesheet" type="text/css" href="<?= base_url()?>assets/vendor/datatables/datatables.min.css"/>
