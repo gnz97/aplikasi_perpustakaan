@@ -17,14 +17,17 @@
                                 <i class="fas fa-chart-bar"></i>Data Buku</a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="<?= site_url('admin/Peminjaman'); ?>">
                                 <i class="fas fa-table"></i>Data Peminjaman</a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="<?= site_url('admin/Pengembalian'); ?>">
                                 <i class="fas fa-table"></i>Data Pengembalian</a>
                         </li>
- 
+                        <li>
+                            <a href="<?= site_url('admin/User'); ?>">
+                                <i class="fas fa-table"></i>Data User</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
