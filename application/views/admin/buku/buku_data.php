@@ -29,7 +29,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <span>Data Buku</span>    
-                                <a href="" class="btn btn-primary">Tambah Buku</a>
+                                <a href="<?=site_url('admin/Buku/viewAddBuku')?>" class="btn btn-primary">Tambah Buku</a>
                             </div>
                             <div class="card-body">
                                 <div class="row">

@@ -8,10 +8,15 @@ class Buku extends CI_Controller {
         $this->load->library('form_validation');
     }
 
-	public function index()
-	{
+	public function index(){
 		$data['buku_data'] = $this->Buku_m->getAll()->result(); 
 		// var_dump($data);
 		$this->load->view('admin/buku/buku_data', $data);
 	}
+
+	public function viewAddBuku(){
+		$this->load->view('admin/buku/buku_add');
+	}
+
+	
 }
