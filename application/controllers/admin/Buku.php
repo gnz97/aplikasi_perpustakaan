@@ -18,5 +18,9 @@ class Buku extends CI_Controller {
 		$this->load->view('admin/buku/buku_add');
 	}
 
+	public function viewEditBuku(){
+		$this->load->view('admin/buku/buku_edit');
+	}
+
 	
 }
