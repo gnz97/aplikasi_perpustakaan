@@ -56,7 +56,7 @@
                                                             <td><?=$buku->bukuKategori?></td>
                                                             <td>
                                                                 <a href="<?=site_url('admin/Buku/viewEditBuku/'.$buku->bukuID)?>"><button class="btn btn-primary">Edit</button></a>
-                                                                <button class="btn btn-danger">Delete</button>
+                                                                <button class="btn btn-danger" id="btn-delete" value="<?=$buku->bukuID?>">Delete</button>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -83,6 +83,65 @@
   
   $(document).ready( function () {
     $('#data_buku').DataTable();
+
+
+    $('#data_buku').on('click','#btn-delete',function(){
+        var id=$(this).attr('value');
+        console.log(id);
+        const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+        }).then((result) => {
+            
+        if (result.isConfirmed) {
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('admin/Buku/deletBuku')?>",
+            dataType : "JSON",
+            data : {id: id},
+            success: function(data){
+                console.log('success');
+                if(data.status == 'success'){
+                    swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    ).then(function(){
+                        location.reload();
+                    });  
+                }
+                               
+            }     
+        });
+        return false;
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+            )
+        }
+        })
+
+        // $('#modalHapus').modal('show');
+        // $('[name="deletepenggunaID"]').val(id);
+    });
 } );
   
   </script>

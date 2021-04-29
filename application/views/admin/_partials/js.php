@@ -25,3 +25,5 @@
     
  
 <script type="text/javascript" src="<?= base_url()?>assets/vendor/datatables/datatables.min.js"></script>
+
+<script src="<?= base_url()?>assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>

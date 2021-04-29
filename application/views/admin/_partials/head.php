@@ -30,3 +30,5 @@
     <link href="<?= base_url()?>assets/css/theme.css" rel="stylesheet" media="all">
 
     <link rel="stylesheet" type="text/css" href="<?= base_url()?>assets/vendor/datatables/datatables.min.css"/>
+
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/sweetalert2/sweetalert2.min.css">

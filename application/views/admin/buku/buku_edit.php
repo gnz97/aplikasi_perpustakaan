@@ -38,13 +38,14 @@
                                                
                                             </div>
                                             <div class="card-body card-block px-5">
-                                                <form action="" method="post" class="form-horizontal">
+                                                <form action="" method="post" class="form-horizontal" id="formAdd">
+                                                <input type="hidden" id="idBuku" name="idBuku"  value="<?=$buku_data->bukuID?>">
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
                                                             <label for="hf-email" class=" form-control-label">No Buku</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="email" id="hf-email" name="hf-email" placeholder="Enter No Buku..." class="form-control">
+                                                            <input type="email" id="noBuku" name="noBuku" placeholder="Enter No Buku..." class="form-control" value="<?=$buku_data->bukuNo?>">
                                                             <!-- <span class="help-block">Please enter your No Buku</span> -->
                                                         </div>
                                                     </div>
@@ -53,16 +54,16 @@
                                                             <label for="hf-email" class=" form-control-label">Nama Buku</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="email" id="hf-email" name="hf-email" placeholder="Enter Nama Buku..." class="form-control">
+                                                            <input type="email" id="namaBuku" name="namaBuku" placeholder="Enter Nama Buku..." class="form-control" value="<?=$buku_data->bukuNama?>">
                                                             <!-- <span class="help-block">Please enter your Nama Buku</span> -->
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="hf-email" class=" form-control-label">Kategori</label>
+                                                            <label for="kategoriBuku" class=" form-control-label">Kategori</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="email" id="hf-email" name="hf-email" placeholder="Enter Kategori..." class="form-control">
+                                                            <input type="email" id="kategoriBuku" name="kategoriBuku" placeholder="Enter Kategori..." class="form-control" value="<?=$buku_data->bukuKategori?>">
                                                             <!-- <span class="help-block">Please enter your Kategori</span> -->
                                                         </div>
                                                     </div>
@@ -70,7 +71,7 @@
                                                 </form>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Submit</button>
+                                                <button type="submit" id="update" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Update</button>
                                                 <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Reset</button>
                                             </div>
                                         </div>
@@ -92,10 +93,41 @@
   <?php $this->load->view('admin/_partials/js.php');?>
 
   <script>
-  
-  
-  
-  </script>
+
+$(document).ready(function(){
+
+    $('#update').on('click', function(){
+        $.ajax({
+            type : "POST",
+            url  :"<?php echo base_url('admin/Buku/updateBuku')?>",
+            dataType : "JSON",
+            data : $('#formAdd').serialize(),
+            success: function(data){
+                console.log(data);
+                if(data.status == 'success'){
+                    console.log("sukses");
+                
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Data Berhasil Di Tambahkan!',
+                    
+                    }).then(function() {
+                        window.location.assign("<?php echo base_url();?>admin/Buku");
+                    });
+                
+                }else{
+                    // $('.gejalaCode_error').html(data.gejalaCode);
+                    // $('.gejalaNama_error').html(data.gejalaNama);
+                } 
+            }
+        });
+    return false;
+    });
+
+});
+
+</script>
 
 </body>
 
