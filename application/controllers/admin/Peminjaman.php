@@ -14,11 +14,11 @@ class Peminjaman extends CI_Controller {
 		$this->load->view('admin/buku/buku_data', $data);
 	}
 
-	public function viewAddBuku(){
+	public function viewAddPeminjaman(){
 		$this->load->view('admin/buku/buku_add');
 	}
 
-	public function addBuku(){
+	public function addPeminjaman(){
 		// $response = array();
 			// $this->form_validation->set_rules('gejalaCode', 'Gejala Code', 'required|is_unique[tb_gejala.gejalaCode]');
 			// $this->form_validation->set_rules('gejalaNama', 'Gejala Nama', 'required');
