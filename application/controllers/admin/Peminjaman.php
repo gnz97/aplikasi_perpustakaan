@@ -4,18 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Peminjaman extends CI_Controller {
 	function __construct(){
         parent::__construct();
-        $this->load->model(['Buku_m']);
+        $this->load->model(['Peminjaman_m']);
         $this->load->library('form_validation');
     }
 
 	public function index(){
-		$data['buku_data'] = $this->Buku_m->getAll()->result(); 
+		$data['peminjaman_data'] = $this->Peminjaman_m->getAll()->result(); 
 		// var_dump($data);
-		$this->load->view('admin/buku/buku_data', $data);
+		// $this->load->view('admin/buku/buku_data', $data);
+		$this->load->view('admin/peminjaman/peminjaman_data', $data);
 	}
 
 	public function viewAddPeminjaman(){
-		$this->load->view('admin/buku/buku_add');
+		$this->load->view('admin/peminjaman/peminjaman_add');
 	}
 
 	public function addPeminjaman(){
