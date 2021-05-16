@@ -48,12 +48,12 @@
                                                 <tbody>
                                                     <?php 
                                                     $i = 1;
-                                                    foreach($peminjaman_data as $peminjaman){?>
+                                                    foreach($pengembalian_data as $pengembalian){?>
                                                         <tr>
                                                             <td><?=$i++?></td>
-                                                            <td><?=$peminjaman->buku_id?></td>
-                                                            <td><?=$peminjaman->anggota_id?></td>
-                                                            <td><?=$peminjaman->tanggalPinjam?></td>
+                                                            <td><?=$pengembalian->buku_id?></td>
+                                                            <td><?=$pengembalian->anggota_id?></td>
+                                                            <td><?=$pengembalian->tanggalPinjam?></td>
                                                             <td>
                                                                 <a href="<?=site_url('admin/Buku/viewEditBuku/'.$peminjaman->peminjamanID)?>"><button class="btn btn-primary">Edit</button></a>
                                                                 <button class="btn btn-danger" id="btn-delete" value="<?=$peminjaman->peminjamanID?>">Delete</button>
